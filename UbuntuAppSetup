@@ -1,0 +1,112 @@
+import os
+from pprint import pprint
+
+
+def my_apps():
+    apt_programs = [
+        'ubuntu-restricted-extras',
+        'wireshark',
+        'vlc',
+        'gimp',
+        'chrome-google-stable',
+        'putty',
+        'curl',
+        'wget',
+        'remmina',
+        'kdenlive',
+        'darktable',
+        'Gdebi',
+        'ufw',
+        'neofetch'
+    ]
+    print()
+    print('Installing your APT apps...')
+    print('*' * 80)
+    os.system('sudo apt-get update && sudo apt-get upgrade -y')
+    for app in apt_programs:
+        print('*' * 80)
+        print(f'INSTALLING {app}...')
+        print('*' * 80)
+        os.system(f'sudo apt-get install {app} -y')
+        print()
+    os.system('sudo apt-get autoremove -y')
+    print()
+    print('YOUR APT APPS HAVE BEEN INSTALLED')
+    print()
+    input('PRESS ENTER KEY TO CONTINUE...')
+
+
+def my_snap():
+    snap_app = [
+        'snap-store',
+        'notepadqq',
+        'brave',
+        'curl https://github.com/balena-io/etcher/releases/download/v1.5.76/balena-etcher-electron-1.5.76-linux-ia32.zip > Downloads/etcher.zip',
+        'curl http://wdl1.pcfg.cache.wpscdn.com/wpsdl/wpsoffice/download/linux/9080/wps-office_11.1.0.9080.XA_amd64.deb'
+    ]
+    print()
+    print('Installing your SNAP apps...')
+    print('*' * 80)
+    for app in snap_app:
+        os.system(f'sudo snap install {app}')
+        print('*' * 80)
+    print()
+    print('YOUR SNAP APPS HAVE BEEN INSTALLED')
+    print()
+    input('PRESS ENTER KEY TO CONTINUE...')
+
+
+def install_external_apps():
+    external_app = {
+        'gns3': [
+            'sudo add-apt-repository ppa:gns3/ppa',
+            'sudo apt update',
+            'sudo apt install gns3-gui gns3-server'
+        ],
+        'vscode': [
+            'curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg',
+            'sudo mv microsoft.gpg /etc/apt/trusted.gpg.d/microsoft.gpg',
+            "sudo sh -c 'echo 'deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main' > /etc/apt/sources.list.d/vscode.list",
+            'sudo apt update',
+            'sudo apt install code'
+        ],
+        'python3.8': [
+            'sudo apt install python3.8 -y',
+            'sudo apt install python3.8-venv'
+        ],
+        'vmware_workstation': [
+            'wget -O ~/vmware.bin https://www.vmware.com/go/getWorkstation-linux',
+            'sudo apt install build-essential',
+            'sudo bash ~/vmware.bin'
+        ],
+        'openshot': [
+            'sudo add-apt-repository ppa:openshot.developers/ppa',
+            'sudo apt update',
+            'sudo apt install openshot-qt'
+        ]
+    }
+
+    print()
+    print('EXTERNAL Apps...')
+    print('*' * 80)
+    for app, lines in external_app.items():
+        print(f'INSTALLING {app}')
+        print('*' * 80)
+        print()
+        for line in lines:
+            os.system(line)
+            print('*' * 80)
+        print()
+    print()
+    print('YOUR EXTERNAL APPS HAVE BEEN INSTALLED')
+    print()
+    input('PRESS ENTER KEY TO CONTINUE...')
+
+
+if __name__ == "__main__":
+    my_apps()
+    my_snap()
+    install_external_apps()
+    os.system('sudo apt-get update -y')
+    print()
+    print('CONGRATS!!! ALL YOUR REQUESTED APPS ARE INSTALLED AND UPDATED')
