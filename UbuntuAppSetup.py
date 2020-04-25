@@ -5,10 +5,11 @@ from pprint import pprint
 def my_apps():
     apt_programs = [
         'ubuntu-restricted-extras',
+        'build-essential checkinstall',
         'wireshark',
+        'libreadline-gplv2-dev libncursesw5-dev libssl-dev libsqlite3-dev tk-dev libgdbm-dev libc6-dev libbz2-dev libffi-dev zlib1g-dev',
         'vlc',
         'gimp',
-        'chrome-google-stable',
         'putty',
         'curl',
         'wget',
@@ -17,10 +18,13 @@ def my_apps():
         'darktable',
         'Gdebi',
         'ufw',
-        'neofetch'
+        'neofetch',
+        'git',
+        'unity-tweak-tool',
+        'nautilus-dropbox'
     ]
     print()
-    print('Installing your APT apps...')
+    print('INSTALLING YOUR APT apps...')
     print('*' * 80)
     os.system('sudo apt-get update && sudo apt-get upgrade -y')
     for app in apt_programs:
@@ -39,19 +43,40 @@ def my_apps():
 def my_snap():
     snap_app = [
         'snap-store',
-        'notepadqq',
+        'notepad-plus-plus',
         'brave',
-        'curl https://github.com/balena-io/etcher/releases/download/v1.5.76/balena-etcher-electron-1.5.76-linux-ia32.zip > Downloads/etcher.zip',
-        'curl http://wdl1.pcfg.cache.wpscdn.com/wpsdl/wpsoffice/download/linux/9080/wps-office_11.1.0.9080.XA_amd64.deb'
+        'shotcut -- classic',
+        'obs-studio'        
     ]
     print()
-    print('Installing your SNAP apps...')
+    print('INSTALLING YOUR SNAP APPS...')
     print('*' * 80)
     for app in snap_app:
         os.system(f'sudo snap install {app}')
         print('*' * 80)
     print()
     print('YOUR SNAP APPS HAVE BEEN INSTALLED')
+    print()
+    input('PRESS ENTER KEY TO CONTINUE...')
+
+
+def my_downloads():
+    deb_list = [
+        'wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb',
+        'wget http://wdl1.pcfg.cache.wpscdn.com/wpsdl/wpsoffice/download/linux/9080/wps-office_11.1.0.9080.XA_amd64.deb > ~/Downloads/wps-office_11.1.0.9080.XA_amd64.deb',
+        'wget https://github.com/balena-io/etcher/releases/download/v1.5.76/balena-etcher-electron-1.5.76-linux-ia32.zip > ~/Downloads/etcher.zip',
+        'wget https://dl2.cdn.filezilla-project.org/client/FileZilla_3.47.2.1_x86_64-linux-gnu.tar.bz > ~/Downloads/FileZilla_3.47.2.1_x86_64-linux-gnu.tar.bz',
+        'wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb > ~/Downloads/google-chrome-stable_current_amd64.deb'
+        ]
+    print()
+    print('DOWNLOADING YOUR APPS...')
+    print('*' * 80)
+    for app in deb_list:
+        os.system(f'sudo {app}')
+        print('*' * 80)
+    print()
+    print('YOUR APPS HAVE BEEN DOWNLOADED')
+    
     print()
     input('PRESS ENTER KEY TO CONTINUE...')
 
@@ -70,10 +95,6 @@ def install_external_apps():
             'sudo apt update',
             'sudo apt install code'
         ],
-        'python3.8': [
-            'sudo apt install python3.8 -y',
-            'sudo apt install python3.8-venv'
-        ],
         'vmware_workstation': [
             'wget -O ~/vmware.bin https://www.vmware.com/go/getWorkstation-linux',
             'sudo apt install build-essential',
@@ -83,11 +104,26 @@ def install_external_apps():
             'sudo add-apt-repository ppa:openshot.developers/ppa',
             'sudo apt update',
             'sudo apt install openshot-qt'
+        ],
+        'ubuntu-cleaner':[
+            'sudo add-apt-repository ppa:gerardpuig/ppa',
+            'sudo apt-get update',
+            'sudo apt-get install ubuntu-cleaner'
+        ],
+        'simplescreenrecorder':[
+            'sudo add-apt-repository ppa:marten-baert/simplescreenrecorder',
+            'sudo apt-get update',
+            'sudo apt-get install simplescreenrecorder'
+        ],
+        'Stacer':[
+            'sudo add-apt-repository ppa:oguzhaninan/stacer',
+            'sudo apt-get update',
+            'sudo apt-get install stacer'
         ]
     }
 
     print()
-    print('EXTERNAL Apps...')
+    print('INSTALLING YOUR REPO(s) AND APPS...')
     print('*' * 80)
     for app, lines in external_app.items():
         print(f'INSTALLING {app}')
@@ -98,7 +134,7 @@ def install_external_apps():
             print('*' * 80)
         print()
     print()
-    print('YOUR EXTERNAL APPS HAVE BEEN INSTALLED')
+    print('YOUR REPO(s) AND APPS ARE INSTALLED')
     print()
     input('PRESS ENTER KEY TO CONTINUE...')
 
@@ -106,7 +142,8 @@ def install_external_apps():
 if __name__ == "__main__":
     my_apps()
     my_snap()
+    my_downloads()
     install_external_apps()
-    os.system('sudo apt-get update -y')
+    os.system('sudo apt-get update -y && sudo apt-get autoremove')
     print()
     print('CONGRATS!!! ALL YOUR REQUESTED APPS ARE INSTALLED AND UPDATED')
