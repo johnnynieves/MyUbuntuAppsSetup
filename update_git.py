@@ -16,10 +16,7 @@ def main():
     comment = input('Please enter your update comment: ')
     os.system(f'git commit -m "{comment}"')
     os.system('git push')
-    os.system(f'{name}')
 
-
-    
 
 if __name__ == "__main__":
     main()
