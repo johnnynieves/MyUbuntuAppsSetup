@@ -6,7 +6,6 @@ def main():
 
     user = input('Please enter your user email: ')
     name = input('Please enter your name: ')
-    pwd = getpass('Password ')
     os.system(f'git config --global user.email "{user}"')
     os.system(f'git config --global user.name "{name}"')
     
