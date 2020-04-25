@@ -15,7 +15,8 @@ def main():
     os.system('git status')
     comment = input('Please enter your update comment: ')
     os.system(f'git commit -m "{comment}"')
-    os.system('git push')
+    os.system('git push','johnnynieves')
+
 
     
 
