@@ -4,8 +4,8 @@ from getpass import getpass
 
 def main():
 
-    user = input('Please enter your user email: ')
-    name = input('Please enter your name: ')
+    user = 'johnny.nieves@live.com'
+    name = 'johnnynieves'
     os.system(f'git config --global user.email "{user}"')
     os.system(f'git config --global user.name "{name}"')
     
