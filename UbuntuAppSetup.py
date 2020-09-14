@@ -21,53 +21,33 @@ def my_apps():
         'neofetch',
         'git',
         'unity-tweak-tool',
-        'nautilus-dropbox'
+        'nautilus-dropbox',
+        'obs-studio',
+        'notepadqq',
+        'filezilla'
     ]
     print()
     print('INSTALLING YOUR APT apps...')
     print('*' * 80)
-    os.system('sudo apt-get update && sudo apt-get upgrade -y')
+    os.system('sudo apt update')
     for app in apt_programs:
         print('*' * 80)
         print(f'INSTALLING {app}...')
         print('*' * 80)
-        os.system(f'sudo apt-get install {app} -y')
+        os.system(f'sudo apt install {app} -y')
         print()
-    os.system('sudo apt-get autoremove -y')
     print()
     print('YOUR APT APPS HAVE BEEN INSTALLED')
     print()
     input('PRESS ENTER KEY TO CONTINUE...')
 
 
-def my_snap():
-    snap_app = [
-        'snap-store',
-        'notepad-plus-plus',
-        'brave',
-        'shotcut -- classic',
-        'obs-studio'        
-    ]
-    print()
-    print('INSTALLING YOUR SNAP APPS...')
-    print('*' * 80)
-    for app in snap_app:
-        os.system(f'sudo snap install {app}')
-        print('*' * 80)
-    print()
-    print('YOUR SNAP APPS HAVE BEEN INSTALLED')
-    print()
-    input('PRESS ENTER KEY TO CONTINUE...')
-
-
 def my_downloads():
     deb_list = [
-        'wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb',
-        'wget http://wdl1.pcfg.cache.wpscdn.com/wpsdl/wpsoffice/download/linux/9080/wps-office_11.1.0.9080.XA_amd64.deb > ~/Downloads/wps-office_11.1.0.9080.XA_amd64.deb',
+        'wget https://wdl1.pcfg.cache.wpscdn.com/wpsdl/wpsoffice/download/linux/9080/wps-office_11.1.0.9080.XA_amd64.deb > ~/Downloads/wps-office_11.1.0.9080.XA_amd64.deb',
         'wget https://github.com/balena-io/etcher/releases/download/v1.5.76/balena-etcher-electron-1.5.76-linux-ia32.zip > ~/Downloads/etcher.zip',
-        'wget https://dl2.cdn.filezilla-project.org/client/FileZilla_3.47.2.1_x86_64-linux-gnu.tar.bz > ~/Downloads/FileZilla_3.47.2.1_x86_64-linux-gnu.tar.bz',
         'wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb > ~/Downloads/google-chrome-stable_current_amd64.deb'
-        ]
+    ]
     print()
     print('DOWNLOADING YOUR APPS...')
     print('*' * 80)
@@ -76,7 +56,7 @@ def my_downloads():
         print('*' * 80)
     print()
     print('YOUR APPS HAVE BEEN DOWNLOADED')
-    
+    # go into the folder pull and install
     print()
     input('PRESS ENTER KEY TO CONTINUE...')
 
@@ -105,20 +85,15 @@ def install_external_apps():
             'sudo apt update',
             'sudo apt install openshot-qt'
         ],
-        'ubuntu-cleaner':[
+        'ubuntu-cleaner': [
             'sudo add-apt-repository ppa:gerardpuig/ppa',
-            'sudo apt-get update',
-            'sudo apt-get install ubuntu-cleaner'
+            'sudo apt update',
+            'sudo apt install ubuntu-cleaner'
         ],
-        'simplescreenrecorder':[
+        'simplescreenrecorder': [
             'sudo add-apt-repository ppa:marten-baert/simplescreenrecorder',
-            'sudo apt-get update',
-            'sudo apt-get install simplescreenrecorder'
-        ],
-        'Stacer':[
-            'sudo add-apt-repository ppa:oguzhaninan/stacer',
-            'sudo apt-get update',
-            'sudo apt-get install stacer'
+            'sudo apt update',
+            'sudo apt install simplescreenrecorder'
         ]
     }
 
@@ -141,9 +116,8 @@ def install_external_apps():
 
 if __name__ == "__main__":
     my_apps()
-    my_snap()
     my_downloads()
     install_external_apps()
-    os.system('sudo apt-get update -y && sudo apt-get autoremove')
+    os.system('sudo apt update -y && sudo apt autoremove')
     print()
     print('CONGRATS!!! ALL YOUR REQUESTED APPS ARE INSTALLED AND UPDATED')
