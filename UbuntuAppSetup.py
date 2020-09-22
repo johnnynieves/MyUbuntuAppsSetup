@@ -1,5 +1,4 @@
 import os
-from pprint import pprint
 
 
 def my_apps():
@@ -42,15 +41,18 @@ def my_apps():
     input('PRESS ENTER KEY TO CONTINUE...')
 
 
-def my_downloads():
+def test():
     deb_list = [
-        'wget https://wdl1.pcfg.cache.wpscdn.com/wpsdl/wpsoffice/download/linux/9080/wps-office_11.1.0.9080.XA_amd64.deb > ~/Downloads/wps-office_11.1.0.9080.XA_amd64.deb',
-        'wget https://github.com/balena-io/etcher/releases/download/v1.5.76/balena-etcher-electron-1.5.76-linux-ia32.zip > ~/Downloads/etcher.zip',
-        'wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb > ~/Downloads/google-chrome-stable_current_amd64.deb'
+        'wget https://wdl1.pcfg.cache.wpscdn.com/wpsdl/wpsoffice/download/linux/9080/wps-office_11.1.0.9080.XA_amd64.deb',
+        'wget https://github.com/balena-io/etcher/releases/download/v1.5.76/balena-etcher-electron-1.5.76-linux-ia32.zip',
+        'wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb',
+        'wget https://download.teamviewer.com/download/linux/teamviewer_amd64.deb'
     ]
     print()
     print('DOWNLOADING YOUR APPS...')
     print('*' * 80)
+    path = "/home/johnny/Downloads"
+    os.chdir(path)
     for app in deb_list:
         os.system(f'sudo {app}')
         print('*' * 80)
