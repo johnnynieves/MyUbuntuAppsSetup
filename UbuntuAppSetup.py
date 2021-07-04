@@ -118,7 +118,6 @@ def install_external_apps():
 
 if __name__ == "__main__":
     my_apps()
-    my_downloads()
     install_external_apps()
     os.system('sudo apt update -y && sudo apt autoremove')
     print()
