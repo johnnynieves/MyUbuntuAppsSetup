@@ -65,11 +65,6 @@ def test():
 
 def install_external_apps():
     external_app = {
-        'gns3': [
-            'sudo add-apt-repository ppa:gns3/ppa',
-            'sudo apt update',
-            'sudo apt install gns3-gui gns3-server'
-        ],
         'vscode': [
             'curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg',
             'sudo mv microsoft.gpg /etc/apt/trusted.gpg.d/microsoft.gpg',
